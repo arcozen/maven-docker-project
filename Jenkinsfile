@@ -20,6 +20,7 @@ pipeline {
             agent {label 'aws-client'}
             steps {
                 sh "pwd"
+                echo "prima di copiare artifacts dal master"
                 copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: '${JOB_NAME}', selector: specific('${BUILD_NUMBER}'), target: '.'
                 sh "sudo docker build . -t tomcatwebapp:${env.BUILD_NUMBER}"
             }
