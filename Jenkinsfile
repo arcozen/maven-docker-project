@@ -9,10 +9,18 @@ pipeline {
             steps {
                 sh 'mvn clean package'
             }
+            post {
+                success {
+                    echo 'Now Archiving...'
+                    archiveArtifacts artifacts: '**/target/*.war'
+                }
+            }
         }
         stage('BuildImage'){
-            agent {label 'awsClient'}
+            agent {label 'aws-client'}
             steps {
+                sh "pwd"
+                copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: '${JOB_NAME}', selector: specific('${BUILD_NUMBER}'), target: '.'
                 sh "docker build . -t tomcatwebapp:${env.BUILD_NUMBER}"
             }
         }
