@@ -21,7 +21,7 @@ pipeline {
             steps {
                 sh "pwd"
                 copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: '${JOB_NAME}', selector: specific('${BUILD_NUMBER}'), target: '.'
-                sh "docker build . -t tomcatwebapp:${env.BUILD_NUMBER}"
+                sh "sudo docker build . -t tomcatwebapp:${env.BUILD_NUMBER}"
             }
         }
     }
