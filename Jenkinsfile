@@ -23,7 +23,7 @@ pipeline {
                 echo 'Now Building...'
                 echo "prima di copiare artifacts dal master"
                 copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: '${JOB_NAME}', selector: specific('${BUILD_NUMBER}'), target: '.'
-                sh "sudo -n docker build . -t tomcatwebapp:${env.BUILD_NUMBER}"
+                sh "sudo docker build . -t tomcatwebapp:${env.BUILD_NUMBER}"
             }
         }
     }
