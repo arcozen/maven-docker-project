@@ -1,4 +1,4 @@
-//commento aggiungo da arcozen.developer
+//commento aggiungo da arcozen.developer ma corretto da arcozen
 pipeline {
     agent any
     tools {
