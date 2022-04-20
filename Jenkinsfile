@@ -1,4 +1,5 @@
 //commento aggiungo da arcozen.developer ma con una aggiunta e che contiene la correzione di arcozen
+// mi trovo sul branch develop dopo aver iniziato a lavorare in modalità Git Flow
 pipeline {
     agent any
     tools {
